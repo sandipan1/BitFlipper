@@ -9,7 +9,7 @@ initial=[1,0,0,0,1,1]<br>
  flip at index 2 =[1,0,1,0,1,1]<br>
 reward=-1
 
- flip at index 5=[1,0,1,0,1,0]
+ flip at index 5=[1,0,1,0,1,0]<br>
  reward=-1 
  
  The goal is to make a agent learn to achieve final state given a initial state.The only observation the agent get are the reward and current state.
