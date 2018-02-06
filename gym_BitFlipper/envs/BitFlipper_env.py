@@ -1,3 +1,7 @@
+import numpy as np
+import gym
+from gym import spaces
+
 class BitFlipper_Env(gym.Env):
   '''Bit Flipping environment
       The state space is binary strings of length n.
