@@ -2,7 +2,7 @@ import numpy as np
 import gym
 from gym import spaces
 
-class BitFlipper_Env(gym.Env):
+class BitFlipperEnv(gym.Env):
   '''Bit Flipping environment
       The state space is binary strings of length n.
       The action space is an index i from {0,1...n-1} which represents the agent flipping ith bit of the environment 
