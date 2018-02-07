@@ -9,7 +9,7 @@ def callback(lcl, _glb):  ##  make changes
     return is_solved
 def main():
   # create environment
-  env=gym.make('Bitflipper-v0')
+  env=gym.make('BitFlipper-v0')
   
   # learning agent
   a=deepq.models.mlp([256])
