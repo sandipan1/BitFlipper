@@ -25,7 +25,7 @@ class BitFlipperEnv(gym.Env):
     '''
      accepts action and returns obs,reward, b_flag(episode start), info dict(optional)
     '''
-    self.state = self._bitflip(self.state,action)  ## computes s_t1
+    self.state = self._bitflip(action)  ## computes s_t1
     reward = self._calcuate_reward()
     self.envstepcount += 1
     done = self._compute_done(reward)
