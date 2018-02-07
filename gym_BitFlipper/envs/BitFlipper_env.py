@@ -13,7 +13,7 @@ class BitFlipperEnv(gym.Env):
   def __init__(self,n,space_seed):
     self.n=n    
     self.action_space = spaces.Discrete(self.n)
-    self.state_space = spaces.MultiBinary(self.n)
+    self.observation_space = spaces.MultiBinary(self.n)
     self.reward_range = (-1,0)
     spaces.seed(space_seed)
     self.initial_state = self.state_space.sample()
@@ -25,8 +25,8 @@ class BitFlipperEnv(gym.Env):
     '''
      accepts action and returns obs,reward, b_flag(episode start), info dict(optional)
     '''
-    self.state = self._bitflip(self.state,action)  ## computes s_t1
-    reward = self._calcuate_reward()
+    self.state = self._bitflip(action)  ## computes s_t1
+    reward = self._calculate_reward()
     self.envstepcount += 1
     done = self._compute_done(reward)
     return  np.array(self.state),reward,done,{}
