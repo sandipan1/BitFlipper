@@ -21,10 +21,9 @@ def main():
   
   # learning agent
   a=deepq.models.mlp([256])
-  act = deepq.learn(env,q_func=a,lr=1e-3,max_timesteps=100000,buffer_size=50000,exploration_fraction=0.1,
-      exploration_final_eps=0.02,
-      print_freq=10,
-      callback=callback)
+  act = deepq.learn(env,q_func=a,lr=1e-3,max_timesteps=10000000,buffer_size=50000,exploration_fraction=0.1,
+      exploration_final_eps=0.05,train_freq=1,batch_size=64,
+      print_freq=500,checkpoint_freq=1000,callback=callback)
   
   print("Saving model to bitflip.pkl")
   act.save("bitflip.pkl")
