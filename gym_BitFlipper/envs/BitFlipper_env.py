@@ -16,8 +16,8 @@ class BitFlipperEnv(gym.Env):
     self.observation_space = spaces.MultiBinary(self.n)
     self.reward_range = (-1,0)
     spaces.seed(space_seed)
-    self.initial_state = self.state_space.sample()
-    self.goal = self.state_space.sample()  
+    self.initial_state = self.observation_space.sample()
+    self.goal = self.observation_space.sample()  
     self.state = self.initial_state
     self.envstepcount = 0
     
