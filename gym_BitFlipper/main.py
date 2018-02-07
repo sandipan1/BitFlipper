@@ -9,8 +9,6 @@ def callback(lcl, _glb):  ##  make changes
 
 def main():
   # create environment
-  space_seed = 0
-  n = 10
   env=gym.make('BitFlipper-v0')
   
   # learning agent
