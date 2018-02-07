@@ -10,7 +10,9 @@ def callback(lcl, _glb):  ##  make changes
 def main():
   # create environment
   print("changed without uninstall\n")
-  env=gym.make('BitFlipper-v0')
+  space_seed = 0
+  n = 10
+  env=gym.make('BitFlipper-v0',n,space_seed)
   
   # learning agent
   a=deepq.models.mlp([256])
