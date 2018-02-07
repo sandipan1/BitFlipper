@@ -1,6 +1,6 @@
 import gym
 from baselines import deepq
-import BitFlipper
+import gym_BitFlipper
 
 def callback(lcl, _glb):  ##  make changes
   
