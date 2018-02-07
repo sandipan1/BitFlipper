@@ -9,7 +9,8 @@ def callback(lcl, _glb):  ##  make changes
 
 def main():
   # create environment
-  print("changed without uninstall")
+  print("changed without uninstall\n")
+  print("truly changed\n")
   env=gym.make('BitFlipper-v0')
   
   # learning agent
