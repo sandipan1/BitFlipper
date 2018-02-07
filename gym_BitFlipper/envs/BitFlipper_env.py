@@ -31,12 +31,12 @@ class BitFlipperEnv(gym.Env):
     done = self._compute_done(reward)
     return  (np.array(self.state),reward,done,{})
 
-  def _reset():  
+  def _reset(self):  
     self.envstepcount = 0
     self.state = self.initial_state
     return self.state
   
-  def _close():
+  def _close(self):
     pass
   
   def _render(self, mode='human', close=False):
