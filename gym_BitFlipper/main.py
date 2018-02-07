@@ -9,7 +9,15 @@ def callback(lcl, _glb):  ##  make changes
     return is_solved
 def main():
   # create environment
-  env=gym.make('BitFlipper-v0')
+  space_seed = 1
+  n = 15
+  id = "BitFlipper"+str(n)+":"+str(space_seed)+"-v0"
+  register(
+    id=id,
+    entry_point='BitFlipper.gym_BitFlipper.envs:BitFlipperEnv',
+    kwargs = {"space_seed":space_seed,"n":n}
+  )
+  env=gym.make(id)
   
   # learning agent
   a=deepq.models.mlp([256])
