@@ -29,10 +29,11 @@ class BitFlipperEnv(gym.Env):
     reward = self._calcuate_reward()
     self.envstepcount += 1
     done = self._compute_done(reward)
-    return  np.array(self.state),reward,done,{}
+    return  (np.array(self.state),reward,done,{})
 
   def _reset():  
-    self.state=self.initial_state
+    self.envstepcount = 0
+    self.state = self.initial_state
     return self.state
   
   def _close():
