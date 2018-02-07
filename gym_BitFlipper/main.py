@@ -1,15 +1,23 @@
 import gym
 from baselines import deepq
-
+from gym.envs.registration import register 
 def callback(lcl, _glb):  ##  make changes
   
     # stop training if reward exceeds 199
     is_solved = lcl['t'] > 100 and sum(lcl['episode_rewards'][-101:-1]) / 100 >= 199
     return is_solved
-
+  
 def main():
   # create environment
-  env=gym.make('BitFlipper-v0')
+  space_seed = 1
+  n = 15
+  id = "BitFlipper-"+str(n)+":"+str(space_seed)
+  register(
+    id=id,
+    entry_point='BitFlipper.gym_BitFlipper.envs:BitFlipperEnv',
+    kwargs = {"space_seed":space_seed,"n":n}
+  )
+  env=gym.make(id)
   
   # learning agent
   a=deepq.models.mlp([256])
