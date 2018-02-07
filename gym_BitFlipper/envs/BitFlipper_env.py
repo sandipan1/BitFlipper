@@ -10,10 +10,10 @@ class BitFlipperEnv(gym.Env):
       Reward: Only goal state has reward 0,rest all states have reward -1
   '''
   
-  def __init__(self,n,space_seed):
+  def __init__(self,n=10,space_seed=0):
     self.n=n    
     self.action_space = spaces.Discrete(self.n)
-    self.state_space = spaces.MultiBinary(self.n)
+    self.observation_space = spaces.MultiBinary(self.n)
     self.reward_range = (-1,0)
     spaces.seed(space_seed)
     self.initial_state = self.state_space.sample()
@@ -38,6 +38,29 @@ class BitFlipperEnv(gym.Env):
   
   def _close():
     pass
+  
+  def _render(self, mode='human', close=False):
+    pass 
+  
+  def _seed(self,seed):
+    pass
+  
+  def _bitflip(self,index):
+    s2=np.array(self.state)
+    s2[index] = not s2[index]
+    return s2
+  
+  def _calculate_reward(self):
+    if(self.goal==self.state):
+      return 0
+    else:
+      return -1
+    
+  def _compute_done(self,reward):
+    if(reward==0 or self.envstepcount >=100):
+      return True
+    else:
+      return False
   
   def _render(self, mode='human', close=False):
     pass 
