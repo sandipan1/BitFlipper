@@ -11,7 +11,7 @@ def main():
   # create environment
   space_seed = 1
   n = 15
-  id = "BitFlipper-"+str(n)+":"+str(space_seed)
+  id = "BitFlipper"+str(n)+":"+str(space_seed)"-v0"
   register(
     id=id,
     entry_point='BitFlipper.gym_BitFlipper.envs:BitFlipperEnv',
