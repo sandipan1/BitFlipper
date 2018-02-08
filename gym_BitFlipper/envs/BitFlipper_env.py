@@ -9,7 +9,7 @@ class BitFlipperEnv(gym.Env):
       Given an initial state the agent has to reach a goal state.
       Reward: Only goal state has reward 0,rest all states have reward -1
   '''
-  
+  metadata = {'render.modes': ['human']}
   def __init__(self,n=10,space_seed=0):
     self.n=n    
     self.action_space = spaces.Discrete(self.n)
@@ -17,70 +17,50 @@ class BitFlipperEnv(gym.Env):
     self.reward_range = (-1,0)
     spaces.seed(space_seed)
     self.initial_state = self.observation_space.sample()
-    self.goal = self.observation_space.sample()  
+    self.goal = self.observation_space.sample()
     self.state = self.initial_state
     self.envstepcount = 0
+    self.reward_max = -np.sum(np.bitwise_xor(self.initial_state,self.goal))+1
+    if(np.array_equal(self.goal,self.initial_state)):
+       self.reward_max = -1
     
-  def _step(self,action):
+  def step(self,action):
     '''
      accepts action and returns obs,reward, b_flag(episode start), info dict(optional)
     '''
-    self.state = self._bitflip(action)  ## computes s_t1
-    reward = self._calculate_reward()
+    self.state = self.bitflip(action)  ## computes s_t1
+    reward = self.calculate_reward()
     self.envstepcount += 1
-    done = self._compute_done(reward)
+    done = self.compute_done(reward)
     return  (np.array(self.state),reward,done,{})
 
-  def _reset(self):  
+  def reset(self):  
     self.envstepcount = 0
     self.state = self.initial_state
     return self.state
   
-  def _close(self):
+  def close(self):
     pass
   
-  def _render(self, mode='human', close=False):
-    pass 
+  def render(self, mode='human', close=False):
+    print(str("State: "+str(self.state.T)+" Steps done: "+str(self.envstepcount))) 
   
-  def _seed(self,seed):
+  def seed(self,seed):
     pass
   
-  def _bitflip(self,index):
+  def bitflip(self,index):
     s2=np.array(self.state)
     s2[index] = not s2[index]
     return s2
   
-  def _calculate_reward(self):
-    if(self.goal==self.state):
-      return 0
+  def calculate_reward(self):
+    if(np.array_equal(self.goal,self.state)):
+      return 0.0
     else:
-      return -1
+      return -1.0
     
-  def _compute_done(self,reward):
-    if(reward==0 or self.envstepcount >=100):
-      return True
-    else:
-      return False
-  
-  def _render(self, mode='human', close=False):
-    pass 
-  
-  def _seed(self,seed):
-    pass
-  
-  def _bitflip(self,index):
-    s2=np.array(self.state)
-    s2[index] = not s2[index]
-    return s2
-  
-  def _calculate_reward(self):
-    if(self.goal==self.state):
-      return 0
-    else:
-      return -1
-    
-  def _compute_done(self,reward):
-    if(reward==0 or self.envstepcount >=100):
+  def compute_done(self,reward):
+    if(reward==0 or self.envstepcount >=self.n):
       return True
     else:
       return False
