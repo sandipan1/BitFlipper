@@ -31,7 +31,7 @@ def train(env,save_path):
   a=deepq.models.mlp([256])
   
   print('a'+str(a))
-  act = deepq.learn(env,q_func=a(reuse=True),lr=1e-4,max_timesteps=1000000,buffer_size=100000,exploration_fraction=0.02,
+  act = deepq.learn(env,q_func=a({"reuse":True}),lr=1e-4,max_timesteps=1000000,buffer_size=100000,exploration_fraction=0.02,
       exploration_final_eps=0.05,train_freq=1,batch_size=64,
       print_freq=200,checkpoint_freq=600,callback=callback)
   #save trained model 
