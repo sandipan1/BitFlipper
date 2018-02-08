@@ -57,8 +57,9 @@ def test(env,load_path,num_episodes=100):
   return success_rate
 
 def main(n=5,space_seed=0):
-  
+  import tensorflow as tf
   env = make_env(n,space_seed)
   path = "bitflip"+str(n)+":"+str(space_seed)+".pkl"
   train(env,path)
+  tf.reset_default_graph()
   success_rate = test(env,path) 
