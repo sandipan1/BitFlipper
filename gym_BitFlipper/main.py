@@ -22,6 +22,7 @@ def make_env(n=10,space_seed=0):
   except :
     print("Environment with id = "+id+" already registered.Continuing with that environment.")
   env=gym.make(id)
+  env.seed(0)
   return env
 
 def train(env,save_path):
