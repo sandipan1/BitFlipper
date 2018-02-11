@@ -21,7 +21,7 @@ class BitFlipperEnv(gym.Env):
     self.goal = self.observation_space.sample()
     self.state = self.initial_state
     self.envstepcount = 0
-    self.seed()
+    #self.seed()
     self.reward_max = -np.sum(np.bitwise_xor(self.initial_state,self.goal))+1
     if(np.array_equal(self.goal,self.initial_state)):
        self.reward_max = 0
@@ -54,8 +54,8 @@ class BitFlipperEnv(gym.Env):
       return print_str 
   
   def seed(self, seed=None):
-    self.np_random, seed = seeding.np_random(seed)
-    return [seed]
+    #self.np_random, seed = seeding.np_random(seed)
+    #return [seed]
   
   def bitflip(self,index):
     s2=np.array(self.state)
