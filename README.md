@@ -24,4 +24,5 @@ To run DQN+HER  on BitFlipper environment call main() from dqn_her.py
 
 ### Related papers:
 Deep Q Networks :http://www.davidqiu.com:8888/research/nature14236.pdf 
+
 Hindsight Experience Replay:https://arxiv.org/pdf/1707.01495.pdf
