@@ -16,7 +16,7 @@ reward=-1
  
 ## Steps to run
 Clone the repo<br>
-In a conda env / virtualenv :<br> pip install -e .
+In a conda env / virtualenv :<br> `pip install -e .`
 <br>
 To run DQN on BitFlipper environment call main() from dqn.py
 
