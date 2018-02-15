@@ -15,10 +15,11 @@ reward=-1
  The goal is to make a agent learn to achieve final state given a initial state.The only observation the agent get are the reward and current state.
  
 ## Steps to run
-Clone the repo
-In a conda env / virtualenv : pip install -e .
-
+Clone the repo<br>
+In a conda env / virtualenv :<br> pip install -e .
+<br>
 To run DQN on BitFlipper environment call main() from dqn.py
+
 To run DQN+HER  on BitFlipper environment call main() from dqn_her.py
 
 ### Related papers:
